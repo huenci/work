@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+ 
+  <classPathEntry location="C:\Users\Administrator.JDCPW8T67Q54I4T\.m2\repository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar" />
+  
+  <context id="TTAPP" >
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/yg_bajing" userId="root" password="root" />
+    <javaModelGenerator targetPackage="com.jiabiango.hr.model" targetProject="jbg-web-hr" />
+    <sqlMapGenerator targetPackage="com.jiabiango.hr.mapper" targetProject="jbg-web-hr" />
+    <javaClientGenerator targetPackage="com.jiabiango.hr.mapper" targetProject="jbg-web-hr" type="XMLMAPPER" />
+<!-- 	<table tableName="jbg_demo" domainObjectName="Demo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" -->
+<!-- 			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false"> -->
+<!-- 	</table> -->
+ 
+<!-- 	<table tableName="jbg_branch_company" domainObjectName="BranchCompany" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" -->
+ 
+<!-- 	<table tableName="jbg_branch_company" domainObjectName="BranchCompany" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false">
+	</table> -->
+<!-- 	<table tableName="jbg_main_company" domainObjectName="MainCompany" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" -->
+ 
+<!-- 			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false"> -->
+<!-- 	</table> -->
+   
+<!-- 	<table tableName="jbg_main_company" domainObjectName="MainCompany" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" -->
+<!-- 			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false"> -->
+<!-- 	</table> -->
+<!-- 	<table tableName="jbg_manager" domainObjectName="Manager" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" -->
+<!-- 			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false"> -->
+<!-- 	</table> -->
+<!--   	<table tableName="jbg_partner" domainObjectName="Partner" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" -->
+<!-- 			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false"> -->
+<!-- 	</table>   -->
+<!-- 	<table tableName="jbg_region" domainObjectName="Region" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" -->
+<!-- 			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false"> -->
+<!-- 	</table> -->
+<!-- 	<table tableName="jbg_sub_company" domainObjectName="SubCompany" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" -->
+<!-- 			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false"> -->
+<!-- 	</table> -->
+  	
+<!--        <table tableName="jbg_company" domainObjectName="Company" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"  -->
+<!-- 			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false">  -->
+<!--  		</table>   -->
+ 		
+<!-- 	<table tableName="jbg_company" domainObjectName="Company" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false">
+	</table>	
+	<table tableName="jbg_manager_user" domainObjectName="ManagerUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false">
+	</table> -->
+	 
+<!--  	<table tableName="jbg_deliver" domainObjectName="Deliver" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" -->
+<!-- 			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false"> -->
+<!-- 	</table> -->
+	
+<!-- 	<table tableName="jbg_route" domainObjectName="Route" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false">
+	</table> -->
+	
+<!-- 	<table tableName="jbg_order_report" domainObjectName="OrderReport" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false">
+	</table> -->
+
+	<table tableName="bj_allinfo" domainObjectName="AllInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false">
+	</table>
+ 	 
+
+  </context>
+</generatorConfiguration>

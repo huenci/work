@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiabiango.hr.mapper.smsmanage.SMSmanageMapper">
+	<resultMap id="BaseResultMap" type="com.jiabiango.hr.model.smsmanage.SMSmanage">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="phoneNumber" jdbcType="VARCHAR" property="phoneNumber" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="startTime" jdbcType="VARCHAR" property="startTime" />
+		<result column="endTime" jdbcType="VARCHAR" property="endTime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, name, phoneNumber,  status, startTime, endTime
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hr_sms_manage
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<insert id="insert" parameterType="com.jiabiango.hr.model.smsmanage.SMSmanage">
+		insert into hr_sms_manage (name, phoneNumber,  status, startTime, endTime)
+		values (#{name},
+		#{phoneNumber},
+		#{status}, 
+		#{startTime},
+		#{endTime})
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jiabiango.hr.model.smsmanage.SMSmanage">
+		update hr_sms_manage
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneNumber != null">
+				phoneNumber = #{phoneNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="startTime != null">
+				startTime = #{startTime,jdbcType=VARCHAR},
+			</if>
+			<if test="endTime != null">
+				endTime = #{endTime,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jiabiango.hr.model.smsmanage.SMSmanage">
+		update hr_sms_manage
+		set name = #{name,jdbcType=VARCHAR},
+		phoneNumber = #{phoneNumber,jdbcType=VARCHAR},
+		status = #{status,jdbcType=INTEGER},
+		startTime = #{startTime,jdbcType=VARCHAR},
+		endTime = #{endTime,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="query" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hr_sms_manage
+		<where>
+			<if test="phoneNumber != null and phoneNumber != ''">
+				phoneNumber = #{phoneNumber}
+			</if>
+			<if test="name != null and name != ''">
+				name like "%"#{name}"%"
+			</if>
+			<if test="status != null">
+				and status = ${status}
+			</if>
+		</where>
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from hr_sms_manage
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+</mapper>

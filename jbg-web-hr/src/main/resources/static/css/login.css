@@ -1,0 +1,122 @@
+.beg-login-bg {
+	background-color: #1c1c1c;
+}
+
+.beg-login-box {
+	width: 450px;
+	height: 280px;
+	margin: 10% auto;
+	background-color: rgba(50, 50, 50, 0.1);
+	border-radius: 10px;
+	color: white;
+	border: 1px solid #9c9c9c;
+}
+
+.beg-login-box header {
+	height: 39px;
+	padding: 10px;
+	border-bottom: 1px solid #9c9c9c;
+}
+
+.beg-login-box header h1 {
+	text-align: center;
+	font-size: 25px;
+	line-height: 40px;
+}
+
+.beg-login-box .beg-login-main {
+	height: 180px;
+	padding: 30px 90px 0;
+}
+
+.beg-login-main .layui-form-item {
+	position: relative;
+}
+
+.beg-login-main .layui-form-item .beg-login-icon {
+	position: absolute;
+	color: #cccccc;
+	top: 10px;
+	left: 10px;
+}
+
+.beg-login-main .layui-form-item input {
+	padding-left: 34px;
+}
+
+.beg-login-box footer {
+	height: 25px;
+}
+
+.beg-login-box footer p {
+	line-height: 20px;
+	text-align: center;
+	font-size: 12px;
+	color: #cccccc;
+}
+
+.beg-pull-left {
+	float: left !important;
+}
+
+.beg-pull-right {
+	float: right !important;
+}
+
+.beg-clear {
+	clear: both;
+}
+
+.beg-login-remember {
+	line-height: 38px;
+}
+
+.beg-login-remember .layui-form-switch {
+	margin-top: 0px;
+}
+
+.beg-login-code-box {
+	position: relative;
+	padding: 10px;
+}
+
+.beg-login-code-box .layui-input {
+	position: absolute;
+	width: 100px;
+}
+
+.beg-login-code-box img {
+	cursor: pointer;
+	position: absolute;
+	left: 115px;
+	height: 38px;
+}
+
+.beg-login-box .layui-input {
+	background-color: rgba(100, 100, 100, 0.2);
+	caret-color:white;
+	color:white;
+}
+
+.beg-login-box .layui-input::-webkit-input-placeholder{
+	color:#bbbbbb;				
+}
+
+.beg-login-main .layui-btn {
+	background-color: rgba(150, 150, 150, 0.5);
+	color:white;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+.beg-login-main .layui-btn:hover {
+	border: 1px solid #ffffff;
+	background-color: rgba(150, 150, 150, 0.7);
+}
+
+.particles-box {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}

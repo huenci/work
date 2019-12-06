@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiabiango.hr.mapper.RoleResourceMapper">
+	<insert id="batchInsert">
+		insert into jbg_role_resource (role_id,
+		resource_id,
+		status, create_by, create_time,
+		update_by, update_time)
+		<foreach collection="list" item="item" open="values" separator="," close="">
+			(
+				#{item.roleId,jdbcType=INTEGER},#{item.resourceId,jdbcType=INTEGER},
+				#{item.status,jdbcType=VARCHAR}, #{item.createBy,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP},
+				#{item.updateBy,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=TIMESTAMP}
+			)
+		</foreach>
+	</insert>
+	
+	<select id="selectResourceByRoleId" parameterType="java.lang.Integer" resultMap="com.jiabiango.hr.mapper.ResourceMapper.BaseResultMap">
+	    select 
+	    res.id, res.url, res.http_method, res.authority,res.type, res.sort
+	    from jbg_role r 
+	    left join jbg_role_resource rr on r.id = rr.role_id
+	    left join jbg_resource res on res.id = rr.resource_id
+	    where r.id = #{id,jdbcType=INTEGER}
+	    and r.status = '1'
+	    and res.status = '1'
+	    and rr.status = '1'
+	 </select>
+	
+	<update id="updateRoleResource">
+		update jbg_role_resource set status = '0',update_time = #{updateTime}, update_by=#{updateBy}
+		where role_id = #{roleId}
+	</update>
+
+</mapper>

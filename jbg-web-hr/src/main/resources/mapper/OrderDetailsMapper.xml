@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiabiango.hr.mapper.order.OrderDetailsMapper">
+	<resultMap id="BaseResultMap" type="com.jiabiango.hr.model.order.OrderDetails">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="orderId" jdbcType="VARCHAR" property="orderId" />
+		<result column="productId" jdbcType="INTEGER" property="productId" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="stitle" jdbcType="VARCHAR" property="stitle" />
+		<result column="amount" jdbcType="DECIMAL" property="amount" />
+		<result column="imageUrl" jdbcType="VARCHAR" property="imageUrl" />
+		<result column="isActivity" jdbcType="INTEGER" property="isActivity" />
+		<result column="activityAmount" jdbcType="DECIMAL" property="activityAmount" />
+		<result column="activityStartDate" jdbcType="TIMESTAMP" property="activityStartDate" />
+		<result column="activityEndDate" jdbcType="TIMESTAMP" property="activityEndDate" />
+		<result column="createDate" jdbcType="TIMESTAMP" property="createDate" />
+		<result column="count" jdbcType="INTEGER" property="count" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id,orderId, productId,title,stitle,amount,imageUrl,isActivity,
+		activityAmount,activityStartDate,activityEndDate,createDate,count
+	</sql>
+	<select id="qryDetailsByOrderId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hr_order_details
+		where orderId = #{orderId}
+	</select>
+	<insert id="saveOrderDetails" parameterType="com.jiabiango.hr.model.order.OrderDetails">
+		insert into hr_order_details (orderId, productId,title,stitle,amount,imageUrl,isActivity,
+		activityAmount,activityStartDate,activityEndDate,createDate,count)
+		values (#{orderId},
+		#{productId},#{title},
+		#{stitle},#{amount},
+		#{imageUrl}, #{isActivity},#{activityAmount},#{activityStartDate},#{activityEndDate},
+		#{createDate},#{count})
+	</insert>
+
+	<select id="queryOrderDetailsPage" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hr_order_details
+		<where>
+			<if test="orderId != null">
+				orderId = #{orderId}
+			</if>
+			<if test="productId != null">
+				and productId = #{productId}
+			</if>
+		</where>
+		order by createDate desc
+	</select>
+	<update id="updateById" parameterType="com.jiabiango.hr.model.order.OrderDetails">
+		update hr_order_details
+		<set>
+			<if test="count != null">
+				count = #{count},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+</mapper>

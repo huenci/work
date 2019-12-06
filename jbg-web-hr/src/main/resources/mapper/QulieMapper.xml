@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiabiango.hr.mapper.area.QulieMapper" >
+  <resultMap id="BaseResultMap" type="com.jiabiango.hr.model.area.Qulie" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="quid" property="quid" jdbcType="INTEGER" />
+    <result column="pai" property="pai" jdbcType="INTEGER" />
+    <result column="lie" property="lie" jdbcType="INTEGER" />
+    <result column="allinfoId" property="allinfoId" jdbcType="INTEGER" />
+    <result column="anzangshijian" property="anzangshijian" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="BaseResultQulieList" type="com.jiabiango.hr.model.area.QulieList" >
+    <result column="quid" property="quid" jdbcType="INTEGER" />
+    <result column="pai" property="pai" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, quid,pai,lie
+  </sql>
+  	<select id="queryQulieAll" resultMap="BaseResultMap">
+		SELECT q.*,f.id as allinfoId,f.anzangshijian from bj_qulie q 
+		LEFT JOIN bj_allinfo f on q.quid = f.qu AND q.pai = f.pai and q.lie = f.hao
+		where q.quid = #{quid,jdbcType=INTEGER}
+		order by q.pai,q.lie
+	</select>
+	
+	<select id="queryQulieListAll" resultMap="BaseResultMap">
+		SELECT q.*,f.id as allinfoId,f.anzangshijian from bj_qulie q 
+		LEFT JOIN bj_allinfo f on q.quid = f.qu AND q.pai = f.pai and q.lie = f.hao
+		where q.quid = #{quid,jdbcType=INTEGER} and q.pai = #{pai,jdbcType=INTEGER}
+		order by q.pai,q.lie
+	</select>
+	
+	<select id="queryQulieList" resultMap="BaseResultQulieList">
+		SELECT quid,pai from bj_qulie where quid =#{quid,jdbcType=INTEGER} GROUP BY pai
+	</select>
+	
+    <insert id="insert" parameterType="com.jiabiango.hr.model.area.Qulie" >
+    insert into bj_qulie (id, quid,pai,lie)
+    values (#{id,jdbcType=INTEGER}, #{quid,jdbcType=INTEGER}, #{pai,jdbcType=INTEGER}, #{lie,jdbcType=INTEGER})
+  </insert>
+</mapper>

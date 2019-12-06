@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiabiango.hr.mapper.order.OrderMapper">
+	<resultMap id="BaseResultMap" type="com.jiabiango.hr.model.order.Order">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="orderId" jdbcType="VARCHAR" property="orderId" />
+		<result column="openId" jdbcType="VARCHAR" property="openId" />
+		<result column="productId" jdbcType="INTEGER" property="productId" />
+		<result column="orderStatus" jdbcType="INTEGER" property="orderStatus" />
+		<result column="paymentStatus" jdbcType="INTEGER" property="paymentStatus"/>
+		<result column="phoneNumber" jdbcType="VARCHAR" property="phoneNumber" />
+		<result column="weixinNo" jdbcType="VARCHAR" property="weixinNo" />
+		<result column="orderPrice" jdbcType="DECIMAL" property="orderPrice" />
+		<result column="actualPrice" jdbcType="DECIMAL" property="actualPrice" />
+		<result column="count" jdbcType="INTEGER" property="count" />
+		<result column="isEdit" jdbcType="INTEGER" property="isEdit" />
+		<result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="paymentTime" jdbcType="TIMESTAMP" property="paymentTime" />
+		<result column="startDate" jdbcType="TIMESTAMP" property="startDate" />
+		<result column="endDate" jdbcType="TIMESTAMP" property="endDate"/>
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, orderId,productId,openId,orderStatus,isEdit,paymentStatus,count,phoneNumber,weixinNo, orderPrice, actualPrice, createTime,paymentTime,startDate,endDate
+	</sql>
+	<select id="qryOrderById" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hr_order
+		where orderId = #{orderId}
+	</select>
+	<insert id="saveOrder" parameterType="com.jiabiango.hr.model.order.Order">
+		insert into hr_order (orderId,openId,productId,orderStatus, paymentStatus, phoneNumber, orderPrice, actualPrice,
+		createTime,paymentTime,startDate,endDate,count)
+		values (#{orderId},
+		#{openId},
+		#{productId},
+		#{orderStatus},
+		#{paymentStatus}, 
+		#{phoneNumber},
+		#{orderPrice},
+		#{actualPrice},
+		#{createTime},
+		#{paymentTime},
+		#{startDate},
+		#{endDate},
+		#{count}
+		)
+	</insert>
+	<update id="updateByOrderId" parameterType="com.jiabiango.hr.model.order.Order">
+		update hr_order
+		<set>
+			<if test="orderStatus != null">
+				orderStatus = #{orderStatus},
+			</if>
+			<if test="orderPrice != null">
+				orderPrice = #{orderPrice},
+			</if>
+			<if test="phoneNumber != null">
+				phoneNumber = #{phoneNumber},
+			</if>
+			<if test="startDate != null">
+				startDate = #{startDate},
+			</if>
+			<if test="endDate != null">
+				endDate = #{endDate},
+			</if>
+			<if test="isEdit != null">
+				isEdit = #{isEdit},
+			</if>
+			<if test="count != null">
+				count = #{count},
+			</if>
+		</set>
+		where orderId = #{orderId}
+	</update>
+
+	<update id="upEditStatus" parameterType="com.jiabiango.hr.model.order.Order">
+		update hr_order
+		<set>
+			<if test="isEdit != null">
+				isEdit = #{isEdit},
+			</if>
+		</set>
+		where orderId = #{orderId}
+	</update>
+
+	<select id="queryOrder" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hr_order
+		<where>
+			<if test="openId != null and openId != ''">
+				openId = #{openId}
+			</if>
+			<!-- <if test="phoneNumber != null and phoneNumber != ''">
+				title like "%"#{title}"%"
+			</if> -->
+			<if test="phoneNumber != null and phoneNumber != ''">
+				and phoneNumber = ${phoneNumber}
+			</if>
+			<if test="orderStatus != null">
+				and orderStatus = ${orderStatus}
+			</if>
+			<if test="status != null and status == 99">
+				and orderStatus != 3 and orderStatus != 2
+			</if>
+		</where>
+		order by isEdit desc,createTime desc
+	</select>
+	
+	<select id="qryCustomerOrder" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hr_order
+		where openId = #{openId} 
+			and orderStatus != 3
+		order by createTime desc
+	</select>
+	
+	<select id="qryProductOrder" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hr_order
+		where productId = #{productId} 
+			and orderStatus = 2
+		order by createTime desc
+	</select>
+</mapper>

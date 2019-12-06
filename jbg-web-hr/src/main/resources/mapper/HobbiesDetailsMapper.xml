@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiabiango.hr.mapper.hobbies.HobbiesDetailsMapper">
+	<resultMap id="BaseResultMap" type="com.jiabiango.hr.model.hobbies.HobbiesDetails">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="openId" jdbcType="VARCHAR" property="openId" />
+		<result column="hobbieName" jdbcType="VARCHAR" property="hobbieName" />
+		<result column="hobbiesId" jdbcType="INTEGER" property="hobbiesId" />
+		<result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, openId, hobbiesId, createTime
+	</sql>
+	<insert id="insertHobbiesDetails" parameterType="com.jiabiango.hr.model.hobbies.HobbiesDetails">
+		insert into hr_hobbies_details (openId, hobbiesId, createTime)
+		values (#{openId,jdbcType=VARCHAR},
+		#{hobbiesId,jdbcType=INTEGER},
+		#{createTime,jdbcType=TIMESTAMP})
+	</insert>
+	<delete id="deleteByOpenId" parameterType="java.lang.String">
+        delete from hr_hobbies_details
+        where openId = #{openId,jdbcType=VARCHAR}
+    </delete>
+	<select id="qryHobbiesByOpenId" resultMap="BaseResultMap">
+		select
+		hd.id, hd.openId, hd.hobbiesId, hd.createTime, h.name as hobbieName
+		from hr_hobbies_details hd left join hr_hobbies h on hd.hobbiesId = h.id
+		where openId = #{openId,jdbcType=VARCHAR}
+		order by createTime desc
+	</select>
+</mapper>

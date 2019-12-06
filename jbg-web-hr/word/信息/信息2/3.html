@@ -1,0 +1,358 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="http://www.wushanlingyuan.com:80//js/jquery-1.6.2.js"></script>
+		<title>无标题文档</title>
+		<script type="text/javascript">
+		$(document).ready(function(){ 
+			var deadNames = ",李公明伍,李母张氏".split(',');
+			var borndates = ',壹玖肆柒年拾壹月贰日,壹玖肆肆年叁月壹日'.split(',');
+			var deaddates = ',贰零壹零年拾贰月玖日'.split(',');
+			var sexs = ',0,1';
+			var sexarr=sexs.split(',');
+			var nanindex=0,nvindex=0;
+			if(sexarr.length>=3)
+			{
+				if(sexarr[1]==0)
+				{nanindex=1;}
+				else if(sexarr[2]==0)
+				{nanindex=2;}
+				if(sexarr[1]==1)
+				{nvindex=1;}
+				else if(sexarr[2]==1)
+				{nvindex=2;}
+			}
+			else
+			{
+				if(sexarr[1]==0)
+				{nanindex=1;nvindex=0;}
+				if(sexarr[1]==1)
+				{nanindex=0;nvindex=1;}
+			}
+			$('#piru').html(deadNames[nvindex]);
+			$('#kaoda').html(deadNames[nanindex]);
+			$('#nvborntime').html(borndates[nvindex]);
+			$('#nanborntime').html(borndates[nanindex]);
+			$('#nvdeadtime').html(deaddates[nvindex]);
+			$('#nandeadtime').html(deaddates[nanindex]);
+		});
+		
+		</script>
+	</head>
+	<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	line-height: 90px;
+}
+</style>
+
+	<body>
+	<!--startprint1-->
+		<center>
+			<table
+				style="width: 1000px; height: 450px; text-align: center;"
+				align="center">
+				<tr>
+					<td colspan="4">
+						<table>
+							<tr>
+								<td rowspan="2" height="180">
+									<img
+										src=""
+										width="120" height="160"
+										style="float: left; margin-left: 100px;" />
+									<img
+										src=""
+										width="120" height="160"
+										style="float: left; margin-left: 35px;" />
+								</td>
+
+								<td style="padding-left: 50px;">
+									<table>
+										<tr>
+											<td>
+												<div
+													style="font-size: 20px; line-height: 40px; width: 265px; float: left; text-align: left;">
+													诞于<span id="nanborntime"></span>
+												</div>
+											</td>
+											<td>
+												<div
+													style="font-size: 20px; line-height: 40px; width: 265px; float: left; text-align: left;">
+													卒于<span id="nandeadtime"></span>
+												</div>
+											</td>
+
+										</tr>
+										<tr>
+											<td>
+												<div
+													style="font-size: 20px; line-height: 40px; width: 265px; float: left; text-align: left;">
+													诞于<span id="nvborntime"></span>
+												</div>
+											</td>
+											<td>
+												<div
+													style="font-size: 20px; line-height: 40px; width: 265px; float: left; text-align: left;">
+													卒于<span id="nvdeadtime"></span>
+												</div>
+											</td>
+										</tr>
+									</table>
+
+								</td>
+
+							</tr>
+
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="2">
+						<div style="font-size: 50px;">
+							顕
+						</div>
+					</td>
+					<td>
+						<div style="font-size: 40px; float: left; margin-left: 85px;">
+							<span style="float: left;">考</span>
+							<span id="kaoda"
+								style="width: 200px; display: block; font-size: 35px; margin-left: 20px; float: left;">
+							</span>
+						</div>
+					</td>
+					<td>
+						<div style="font-size: 40px;">
+							大
+						</div>
+					</td>
+					<td rowspan="2"  style="padding-left:100px;"><div style="font-size:40px; float:left; ">人之墓</div></td>
+				</tr>
+
+				<tr>
+					<td>
+						<div style="font-size: 40px; float: left; margin-left: 85px;">
+							<span style="float: left;">妣</span>
+							<span id="piru"
+								style="width: 200px; display: block; font-size: 35px; margin-left: 20px; float: left; ">
+							</span>
+						</div>
+					</td>
+					<td>
+						<div style="font-size: 40px;">
+							孺
+						</div>
+					</td>
+
+				</tr>
+
+				<tr>
+					<td rowspan="2">
+						<div style="font-size: 30px;">
+							孝
+						</div>
+					</td>
+					<td>
+						<table>
+							<tr>
+								<td>
+									<div style="font-size: 30px; padding-right: 15px;">
+										子
+									</div>
+								</td>
+
+								<td>
+									<div style="line-height: 35px; width:220px;">
+									
+                                    <div style="float:left; margin-left:10px;width:70px;">
+										
+											李雄富
+									
+                                    </div>
+									
+                                    <div style="float:left; margin-left:10px;width:70px;">
+										
+											李雄光
+									
+                                    </div>
+									
+									</div>
+
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td>
+						<table>
+							<tr>
+								<td>
+									<div style="font-size: 30px; padding-right: 15px;">
+										女
+									</div>
+								</td>
+
+								<td>
+									<div style="line-height: 35px; width:220px;">
+									
+											  <div style="float:left; margin-left:10px;width:70px;">
+													李娜
+											</div>
+										
+										</div>
+
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td rowspan="2">
+						<table>
+							<tr>
+								<td>
+									<div style="font-size: 30px; padding-right: 15px;">
+										孙
+									</div>
+								</td>
+
+								<td>
+									<div style="line-height: 35px; width:220px;">
+									
+                                      <div style="float:left; margin-left:10px;width:70px;">
+												李悦
+										</div>
+									
+                                      <div style="float:left; margin-left:10px;width:70px;">
+												李洋
+										</div>
+									
+									</div>
+
+								</td>
+								<td>
+									<div style="font-size: 30px; padding-left: 15px;">
+										立
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<table>
+							<tr>
+								<td>
+									<div style="font-size: 30px; padding-right: 15px;">
+										媳
+									</div>
+								</td>
+
+								<td>
+									<div style="line-height: 35px; width:220px;">
+									
+                                    	  <div style="float:left; margin-left:10px;width:70px;">
+												杨再兴
+									</div>
+									
+                                    	  <div style="float:left; margin-left:10px;width:70px;">
+												李玲
+									</div>
+									
+									</div>
+
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td>
+						<table>
+							<tr>
+								<td>
+									<div style="font-size: 30px; padding-right: 15px;">
+										婿
+									</div>
+								</td>
+
+								<td>
+									<div style="line-height: 35px; width:220px;">
+									
+									</div>
+
+								</td>
+							</tr>
+						</table>
+					</td>
+
+				</tr>
+
+				<tr>
+					<td colspan="4">
+						<table width="100%">
+							<tr>
+								<td width="30%">
+									购墓方签字：
+								</td>
+								<td width="20%" align="right">
+									陵园签字：
+								</td>
+								<td width="1%" align="left">
+									<img src="http://www.wushanlingyuan.com:80//images/yjw.jpg" align="middle"/>
+								</td>
+								<td width="29%">
+									建墓施工方签字：胡
+								</td>
+								<td width="20%">
+									 
+								</td>
+
+							</tr>
+
+						</table>
+
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</center>
+		<!--endprint1-->
+		<div class="noprint" style="float: right;">
+<input id="btnPrint" type="button" value="打印预览" onclick=preview(1) />
+</div>
+<style type="text/css" media=print>
+.noprint{display : none }
+</style>
+<script>
+function preview(oper)       
+{
+if (oper < 10)
+{
+bdhtml=window.document.body.innerHTML;//获取当前页的html代码
+sprnstr="<!--startprint"+oper+"-->";//设置打印开始区域
+eprnstr="<!--endprint"+oper+"-->";//设置打印结束区域
+prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+18); //从开始代码向后取html
+
+prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));//从结束代码向前取html
+window.document.body.innerHTML=prnhtml;
+window.print();
+window.document.body.innerHTML=bdhtml;
+} else {
+window.print();
+}
+}
+</script>
+	</body>
+</html>

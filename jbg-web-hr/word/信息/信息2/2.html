@@ -1,0 +1,130 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>无标题文档</title>
+	</head>
+	<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+</style>
+	<body>
+	<!--startprint1-->
+		<table
+			style="width: 800px; line-height: 50px; padding: 15px;"
+			align="center">
+			<tr>
+				<td>
+					<div
+						style="font-size: 35px; font-weight: bold; text-align: center;">
+						乌山八景公墓建墓工程单（存根）
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					墓地名称：福寿金钱
+				</td>
+			</tr>
+			<tr>
+				<td>
+					亡者姓名：李明武
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table width="500" border="0">
+						<tr>
+							<td>
+								墓区位置：东三区,16排,4号
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table width="500" border="0">
+						<tr>
+							<td>
+								安葬日期：2011年1月19日
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table width="500" border="0">
+						<tr>
+							<td>
+								验收日期：2011年2月9日
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					增减项目：
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table border="0">
+						<tr>
+							<td width="300">
+								八景公墓经办人：易顺钦
+							</td>
+							<td width="300">
+								施工方责任人：胡
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td width="250">
+								安葬方：张
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" style="padding-right: 100px;">
+					2019年4月14日
+				</td>
+			</tr>
+		</table>
+		<!--endprint1-->
+		<div class="noprint" style="float: right;">
+<input id="btnPrint" type="button" value="打印预览" onclick=preview(1) />
+</div>
+<style type="text/css" media=print>
+.noprint{display : none }
+</style>
+<script>
+function preview(oper)       
+{
+if (oper < 10)
+{
+bdhtml=window.document.body.innerHTML;//获取当前页的html代码
+sprnstr="<!--startprint"+oper+"-->";//设置打印开始区域
+eprnstr="<!--endprint"+oper+"-->";//设置打印结束区域
+prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+18); //从开始代码向后取html
+
+prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));//从结束代码向前取html
+window.document.body.innerHTML=prnhtml;
+window.print();
+window.document.body.innerHTML=bdhtml;
+} else {
+window.print();
+}
+}
+</script>
+	</body>
+</html>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiabiango.hr.mapper.customer.CustomerMapper">
+	<resultMap id="BaseResultMap" type="com.jiabiango.hr.model.customer.Customer">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="customerId" jdbcType="VARCHAR" property="customerId" />
+		<result column="openId" jdbcType="VARCHAR" property="openId" />
+		<result column="phoneNumber" jdbcType="VARCHAR" property="phoneNumber" />
+		<result column="customerName" jdbcType="VARCHAR" property="customerName" />
+		<result column="wechatName" jdbcType="VARCHAR" property="wechatName" />
+		<result column="sex" jdbcType="INTEGER" property="sex" />
+		<result column="headImgUrl" jdbcType="VARCHAR" property="headImgUrl" />
+		<result column="province" jdbcType="VARCHAR" property="province" />
+		<result column="city" jdbcType="VARCHAR" property="city" />
+		<result column="country" jdbcType="VARCHAR" property="country" />
+		<result column="createDate" jdbcType="TIMESTAMP" property="createDate" />
+		<result column="editDate" jdbcType="TIMESTAMP" property="editDate" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, customerId, openId,phoneNumber,customerName, wechatName, sex ,headImgUrl,province,city,country,createDate,editDate
+	</sql>
+	<select id="qryCustoemrByOpenID" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hr_customer
+		where openId = #{openId,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="qryCustoemrByID" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hr_customer
+		where id = #{id}
+	</select>
+	
+	<insert id="insertCustomer" parameterType="com.jiabiango.hr.model.customer.Customer">
+		insert into hr_customer (customerId, openId,phoneNumber,customerName, wechatName, sex ,headImgUrl,province,city,country,createDate)
+		values (#{customerId,jdbcType=VARCHAR},
+		#{openId,jdbcType=VARCHAR},
+		#{phoneNumber,jdbcType=VARCHAR},
+		#{customerName,jdbcType=VARCHAR},
+		#{wechatName,jdbcType=VARCHAR},
+		#{sex,jdbcType=INTEGER},
+		#{headImgUrl,jdbcType=VARCHAR},
+		#{province,jdbcType=VARCHAR},
+		#{city,jdbcType=VARCHAR},
+		#{country,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP})
+	</insert>
+
+	<update id="updateCustomer" parameterType="com.jiabiango.hr.model.customer.Customer">
+		update hr_customer
+		set customerName = #{customerName},
+		wechatName = #{wechatName},
+		phoneNumber = #{phoneNumber},
+		sex = #{sex}
+		where openId = #{openId}
+	</update>
+
+	<update id="updateCustomerhead" parameterType="com.jiabiango.hr.model.customer.Customer">
+		update hr_customer
+		set headImgUrl = #{headImgUrl}
+		where openId = #{openId}
+	</update>
+
+	<select id="queryCustomerPage" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hr_customer
+		<where>
+			<if test="phoneNumber != null and phoneNumber != ''">
+				phoneNumber = #{phoneNumber}
+			</if>
+			<if test="name != null and name != ''">
+				customerName like "%"#{name}"%"
+				or wechatName like "%"#{name}"%"
+			</if>
+		</where>
+		order by createDate desc
+	</select>
+	
+	<!-- <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from hr_hobbies
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+	<select id="queryHobbies" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hr_hobbies
+		<where>
+			<if test="name != null and name != ''">
+				name = #{name}
+			</if>
+			<if test="status != null">
+				and status = #{status}
+			</if>
+		</where>
+		order by createTime desc
+	</select> -->
+</mapper>
